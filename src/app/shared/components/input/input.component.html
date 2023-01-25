@@ -1,0 +1,18 @@
+<div class="wrap-input100 validate-input"
+     [ngClass]="{
+       small: inputParameters.size === 'small'
+       }">
+  <span *ngIf="inputParameters.icon" class="btn-show-pass">
+    <i class="{{ inputParameters.icon}}"></i>
+  </span>
+  <input class="input100"
+         [type]="type"
+         [value]="value"
+         [placeholder]="inputParameters.placeholder"
+         [disabled]="inputParameters.isdisabled"
+         (input)="change($event)"
+         />
+  <span class="focus-input100"></span>
+</div>
+
+
