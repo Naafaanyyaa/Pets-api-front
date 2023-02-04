@@ -1,6 +1,6 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor,  NG_VALUE_ACCESSOR} from "@angular/forms";
-import {IInput} from "../../../models/input.interface";
+import {IInput, definitionInterface } from "../../../models/input.interface";
 
 export const INPUT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -23,6 +23,7 @@ export class InputComponent implements OnInit, ControlValueAccessor{
   @Input() type: 'email' | 'password' | 'date' | 'file' | 'text' = 'text';
   @Input() size: 'default' | 'small' | 'big' = 'default';
   @Input() icon?: string;
+
   @Input() set inputParameters(value: IInput) {
     this.componentParameters = value;
   }
@@ -44,5 +45,15 @@ export class InputComponent implements OnInit, ControlValueAccessor{
   }
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+  changeType = (type:string) => {
+    if (this.inputParameters.isChangingType){
+      if (this.type == "password"){
+        this.type = "text"
+      }
+      else {
+        this.type = "password"
+      }
+    }
   }
 }

@@ -3,13 +3,13 @@
        small: inputParameters.size === 'small'
        }">
   <span *ngIf="inputParameters.icon" class="btn-show-pass">
-    <i class="{{ inputParameters.icon}}"></i>
+    <fa-icon (click)="changeType(type)" [icon]="inputParameters.icon"></fa-icon>
   </span>
   <input class="input100"
          [type]="type"
          [value]="value"
          [placeholder]="inputParameters.placeholder"
-         [disabled]="inputParameters.isdisabled"
+         [disabled]="inputParameters.isDisabled"
          (input)="change($event)"
          />
   <span class="focus-input100"></span>

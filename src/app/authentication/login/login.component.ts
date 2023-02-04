@@ -1,35 +1,38 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators, NgForm} from '@angular/forms';
-import {NgFor} from "@angular/common";
 import {AuthenticationRequestModel} from "../../models/authenticationRequestModel.interface";
 import {AuthenticationResponseModel} from "../../models/authenticationResponseModel.interface";
 import {IInput} from "../../models/input.interface";
 import {UserService} from "../../shared/services/user.service";
-import {HttpClient} from "@angular/common/http";
+import {faEye, faUser, faPerson} from "@fortawesome/free-solid-svg-icons";
+import {HttpHeaders} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css', '../../../util.css'],
+  styleUrls: ['./login.component.css', '../../../util.css','../../../styles.css'],
   providers:[UserService]
 })
 export class LoginComponent implements OnInit{
   loginForm!: FormGroup;
   receivedUser : AuthenticationResponseModel | undefined;
-  showError: boolean = false;
   public loginConfig: IInput = {
     type: 'default',
-    placeholder: 'Username..',
-    isdisabled: false,
-    error:"Error"
+    placeholder: 'Username',
+    isDisabled: false,
+    error:"Error",
+    icon: faUser
   }
   public passwordConfig: IInput = {
     type: 'default',
-    placeholder: 'Password..',
-    isdisabled: false,
-    error:"Error"
+    placeholder: 'Password',
+    isDisabled: false,
+    error:"Error",
+    icon: faEye,
+    isChangingType : true
   }
-  constructor(private authService: UserService) {}
+  constructor(private authService: UserService, private router: Router) {}
   ngOnInit() {
     this.loginForm = new FormGroup({
       "username": new FormControl("", Validators.required),
@@ -38,13 +41,8 @@ export class LoginComponent implements OnInit{
         ])
     })
   }
-  // Validators.pattern('"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"')
   validateControl = (controlName: string) => {
     return this.loginForm.get(controlName)?.invalid && this.loginForm.get(controlName)?.touched
-  }
-
-  hasError = (controlName: string, errorName: string) => {
-    return this.loginForm.get(controlName)?.hasError(errorName)
   }
 
   submit = (loginFormValue:any) => {
@@ -57,8 +55,11 @@ export class LoginComponent implements OnInit{
       password: login.password
     }
 
-    this.authService.postData(userObject).subscribe({
-      next:(data:any) => {this.receivedUser = data},
+    this.authService.loginUser(userObject).subscribe({
+      next:(data:AuthenticationResponseModel) => {
+        localStorage.setItem('token', data.token);
+        this.router.navigate(["/"]);
+      },
       error: error => console.log(error)
     });
   }

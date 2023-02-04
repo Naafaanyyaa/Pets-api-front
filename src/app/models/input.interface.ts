@@ -1,8 +1,17 @@
+import {IconDefinition} from "@fortawesome/free-solid-svg-icons";
+
 export interface IInput{
   type: 'default' | 'textarea',//in future using "|" u can add new types
   placeholder: string,
-  size?: 'default' | 'small'
-  icon?: string,
+  size?: 'default' | 'small' | 'normal'
+  icon?: IconDefinition,
   error?: string,
-  isdisabled: boolean
+  isDisabled: boolean,
+  isChangingType?: boolean | false;
 }
+
+export interface definitionInterface{
+  param:string;
+}
+
+

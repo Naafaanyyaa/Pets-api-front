@@ -10,31 +10,30 @@
             <img src="https://via.placeholder.com/50x50.png" class="welcome-wrap__img-size">
           </div>
         </div>
-        <div class="form-group">
-          <app-input
-            type="text"
-            id="username"
-            formControlName="username"
-            [inputParameters]="loginConfig"
-          ></app-input>
-        </div>
+        <app-input
+          type="text"
+          id="username"
+          formControlName="username"
+          [inputParameters]="loginConfig"
+        ></app-input>
         <div class="exception m-b-5 color-red f-s-8">
           <span *ngIf="validateControl('username')" class="color-red">*Username is required</span>
         </div>
-        <div class="form-group">
-          <app-input type="password"
-                     id="password"
-                     formControlName="password"
-                     [inputParameters]="passwordConfig"
-          ></app-input>
-        </div>
+        <app-input type="password"
+                   id="password"
+                   formControlName="password"
+                   [inputParameters]="passwordConfig"
+        ></app-input>
         <div class="exception m-b-10 color-red f-s-8">
-          <span *ngIf="validateControl('password')" class="color-red">*Password must contain:<br>One a-z<br>One A-Z<br>One 0-9<br>One special symbol<br>Contain 8-24 symbols</span>
+          <span *ngIf="validateControl('password')" class="color-red">*Password is required</span>
         </div>
-        <div class="form-group">
-          <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        <div class="form-group m-b-15">
+          <app-login-button type="submit" text="Login" [disabled]="loginForm.invalid">Login</app-login-button>
         </div>
       </form>
+      <div class="nav-link">
+        <a [routerLink]="['/registration']">Still dont`t have an account?</a>
+      </div>
     </div>
   </div>
 </div>

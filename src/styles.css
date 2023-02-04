@@ -42,6 +42,7 @@ a {
   line-height: 1.7;
   color: #666666;
   margin: 0px;
+  text-decoration: none;
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -129,3 +130,21 @@ iframe {
   border: none !important;
 }
 
+.text-size-12{
+  font-size: 12px;
+}
+.text-size-14{
+  font-size: 14px;
+}
+
+main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+.main-color{
+  background-color:#141019;
+  background: radial-gradient(at 50% -20%, #908392, #0d060e) fixed;
+}

@@ -1,12 +1,16 @@
 .wrap-input100 {
-  width: 280px;
+  width: 100%;
   position: relative;
   border-bottom: 2px solid #adadad;
   margin-bottom: 29px;
 }
 
 .small{
-  width: 180px;
+  max-width: 180px;
+}
+
+.normal{
+  max-width: 280px;
 }
 
 .input100 {
@@ -47,7 +51,7 @@
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 
-  background: #6a7dfe;
+  background: #f28830;
   background: -webkit-linear-gradient(left, #21d4fd, #b721ff);
   background: -o-linear-gradient(left, #21d4fd, #b721ff);
   background: -moz-linear-gradient(left, #21d4fd, #b721ff);
@@ -114,7 +118,7 @@
 }
 
 .btn-show-pass:hover {
-  color: #6a7dfe;
+  color: #f28830;
   color: -webkit-linear-gradient(left, #21d4fd, #b721ff);
   color: -o-linear-gradient(left, #21d4fd, #b721ff);
   color: -moz-linear-gradient(left, #21d4fd, #b721ff);
