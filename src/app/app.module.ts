@@ -4,7 +4,7 @@ import {Routes, RouterModule} from "@angular/router";
 
 import { AppComponent } from './app.component';
 import {InputComponent} from "./shared/components/input/input.component";
-import { LoginComponent } from './authentication/login/login.component';
+import { LoginComponent } from './authentication/login/login/login.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
@@ -16,6 +16,7 @@ import { Page404Component } from './pages/page404/page404.component';
 import { LoginButtonComponent } from './shared/components/login-button/login-button.component';
 import {AuthInterceptor} from "./shared/services/user.service.Interceptor";
 import {UserService} from "./shared/services/user.service";
+import {AppRoutingModule} from "./app-routing.module";
 
 const routes: Routes = [
 
@@ -42,7 +43,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AppRoutingModule
   ],
   providers: [ UserService,
     {

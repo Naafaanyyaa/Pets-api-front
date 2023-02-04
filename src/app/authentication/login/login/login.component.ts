@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators, NgForm} from '@angular/forms';
-import {AuthenticationRequestModel} from "../../models/authenticationRequestModel.interface";
-import {AuthenticationResponseModel} from "../../models/authenticationResponseModel.interface";
-import {IInput} from "../../models/input.interface";
-import {UserService} from "../../shared/services/user.service";
+import {AuthenticationRequestModel} from "../../../models/authenticationRequestModel.interface";
+import {AuthenticationResponseModel} from "../../../models/authenticationResponseModel.interface";
+import {IInput} from "../../../models/input.interface";
+import {UserService} from "../../../shared/services/user.service";
 import {faEye, faUser, faPerson} from "@fortawesome/free-solid-svg-icons";
 import {HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css', '../../../util.css','../../../styles.css'],
+  styleUrls: ['./login.component.css', '../../../../util.css','../../../styles.css'],
   providers:[UserService]
 })
 export class LoginComponent implements OnInit{
