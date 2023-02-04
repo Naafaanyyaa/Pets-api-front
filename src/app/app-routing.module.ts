@@ -11,10 +11,19 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./hello-page/hello-page.module').then(m => m.HelloPageModule)
   },
-  // {
-  //   path: 'login',
-  //   loadChildren: () => import('./authentication/login/login.module').then(m => m.LoginModule)
-  // }
+  {
+    path: 'login',
+    loadChildren: () => import('./authentication/login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: 'registration',
+    loadChildren: () => import('./authentication/registration/registration.module').then(m => m.RegistrationModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/page404/page404.module').then(m => m.Page404Module)
+  },
+
 ];
 
 

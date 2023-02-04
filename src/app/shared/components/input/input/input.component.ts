@@ -1,6 +1,6 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor,  NG_VALUE_ACCESSOR} from "@angular/forms";
-import {IInput, definitionInterface } from "../../../models/input.interface";
+import {IInput, definitionInterface } from "../../../../models/input.interface";
 
 export const INPUT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,

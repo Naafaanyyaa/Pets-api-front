@@ -10,7 +10,7 @@ import {
   selector: 'app-error',
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.css',
-  '../../../../util.css']
+  '../../../../../util.css']
 })
 export class ErrorComponent implements OnInit, DoCheck{
   public title?:string;

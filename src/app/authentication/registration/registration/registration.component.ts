@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {IInput} from "../../models/input.interface";
+import {IInput} from "../../../models/input.interface";
 import {faEye, faSignature, faUser, faEnvelope} from "@fortawesome/free-solid-svg-icons";
-import {UserService} from "../../shared/services/user.service";
-import {RegistrationRequestModel} from "../../models/registrationRequestModel.interface";
+import {UserService} from "../../../shared/services/user.service";
+import {RegistrationRequestModel} from "../../../models/registrationRequestModel.interface";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css','../../../styles.css', '../../../util.css'],
+  styleUrls: ['./registration.component.css','../../../../styles.css', '../../../../util.css'],
   providers:[UserService]
 })
 export class RegistrationComponent implements OnInit{
