@@ -2,16 +2,18 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {AuthenticationRequestModel} from "../../../models/authenticationRequestModel.interface";
 import {AuthenticationResponseModel} from "../../../models/authenticationResponseModel.interface";
-import {IInput} from "../../../models/input.interface";
+import {IInput} from "../../../component-iterfaces/input.interface";
 import {UserService} from "../../../shared/services/user.service";
 import {faEye, faUser, faPerson} from "@fortawesome/free-solid-svg-icons";
 import {Router} from "@angular/router";
+import jwt_decode from 'jwt-decode';
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css', '../../../../util.css','../../../styles.css'],
-  providers:[UserService]
+  styleUrls: ['./login.component.css','../../../../styles.css', '../../../../util.css'],
+  providers:[UserService, CookieService]
 })
 export class LoginComponent implements OnInit{
   loginForm!: FormGroup;
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit{
     icon: faEye,
     isChangingType : true
   }
-  constructor(private authService: UserService, private router: Router) {}
+  constructor(private authService: UserService, private CookieService : CookieService, private router: Router) {}
   ngOnInit() {
     this.loginForm = new FormGroup({
       "username": new FormControl("", Validators.required),
@@ -43,6 +45,37 @@ export class LoginComponent implements OnInit{
   validateControl = (controlName: string) => {
     return this.loginForm.get(controlName)?.invalid && this.loginForm.get(controlName)?.touched
   }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch(Error) {
+      return null;
+    }
+  }
+
+  saveToCookieStorage(token: string): void{
+    try {
+      const tokenInfo = this.getDecodedAccessToken(token);
+
+      const userInfo = {
+        id: tokenInfo['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
+        username: tokenInfo['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
+        role: tokenInfo['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+      }
+      const exp = tokenInfo.exp;
+
+      this.CookieService.set('token', token, exp);
+      this.CookieService.set('user', JSON.stringify(userInfo), exp);
+
+      //TODO: important, how to get user info
+      // console.log(JSON.parse(this.CookieService.get('user')));
+    } catch(Error) {
+      console.log(Error)
+    }
+  }
+
+
 
   submit = (loginFormValue:any) => {
 
@@ -56,7 +89,7 @@ export class LoginComponent implements OnInit{
 
     this.authService.loginUser(userObject).subscribe({
       next:(data:AuthenticationResponseModel) => {
-        localStorage.setItem('token', data.token);
+        this.saveToCookieStorage(data.token);
         this.router.navigate(["/"]);
       },
       error: error => console.log(error)

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {AuthInterceptor} from "./shared/services/user.service.Interceptor";
+import {AuthInterceptor} from "./shared/services/user.service.interceptor";
 import {UserService} from "./shared/services/user.service";
 import {AppRoutingModule} from "./app-routing.module";
 import {Page404Module} from "./pages/page404/page404.module";

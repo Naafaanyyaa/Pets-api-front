@@ -1,0 +1,80 @@
+.header-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #4d404e;
+}
+.header-wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+}
+.header-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.nav-menu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-menu__button{
+  margin: 0px 15px;
+}
+.white{
+  color: #f2f2f2;
+}
+
+.white:hover {
+  color: #f28830;
+}
+.language{
+  margin: 0 5px;
+}
+.profile{
+  display: flex;
+  align-items: center;
+}
+.burger{
+  position: absolute;
+  visibility: hidden;
+}
+
+@media screen and (max-width: 900px) {
+  .nav-container{
+    position: absolute;
+    visibility: hidden;
+  }
+  .burger{
+    position: relative;
+    visibility: visible;
+  }
+  .burger-button span{
+    width: 40px;
+    border: 2px solid #f2f2f2;
+    background-color: #f2f2f2;
+    display: block;
+    border-radius: 22px;
+    transition: 2s;
+  }
+  .burger-button {
+    position:relative;
+    top: 2vh;
+    right: 2vh;
+    z-index: 9;
+    padding: 8px;
+  }
+}

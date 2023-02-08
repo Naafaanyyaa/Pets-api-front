@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from "@angular/router";
 import {Page404Component} from "./page404/page404.component";
-import {LoginComponent} from "../../authentication/login/login/login.component";
+
 
 
 

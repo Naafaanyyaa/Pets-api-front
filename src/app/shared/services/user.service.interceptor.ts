@@ -9,6 +9,7 @@ import {
 import {Injectable} from "@angular/core";
 import {Observable, tap} from "rxjs";
 import {UserService} from "./user.service";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -18,12 +19,16 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const authReq = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${this.auth.getToken()}`}
-    })
 
-    return next.handle(authReq).pipe(
+    const token = this.auth.getToken();
+    if (token){
+      req = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`}
+      })
+    }
+
+    return next.handle(req).pipe(
       tap(
         (event) => {
           if (event instanceof HttpResponse)

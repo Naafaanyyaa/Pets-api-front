@@ -6,32 +6,42 @@ import {RegistrationRequestModel} from "../../models/registrationRequestModel.in
 import {map, Observable} from "rxjs";
 import {IUserResponse} from "../../models/IUserResponseModel.interface";
 import {AuthenticationResponseModel} from "../../models/authenticationResponseModel.interface";
+import jwt_decode from "jwt-decode";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable()
 export class UserService{
   private readonly api = environment.urlAddress;
-  private response : any;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public cookieService: CookieService) {}
 
   loginUser(user:AuthenticationRequestModel):Observable<AuthenticationResponseModel>{
     const body = {userName:user.name, password:user.password};
-    this.response = this.http.post<AuthenticationResponseModel>(`${this.api}/api/Login/Login`, body);
-    // this.response.subscribe((data: AuthenticationResponseModel) => {
-    //   localStorage.setItem('token', data.token);
-    // })
+    return this.http.post<AuthenticationResponseModel>(`${this.api}/api/Login/Login`, body);
+  }
 
-    return this.response;
+  //TODO: do logout method
+
+  logout(){
+    this.cookieService.deleteAll();
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch(Error) {
+      return null;
+    }
   }
 
   public getToken(): string {
-    return localStorage.getItem('token') ?? '';
+    return this.cookieService.get('token') ?? '';
   }
 
   public isAuthenticated(): boolean {
     // get the token
     const token = this.getToken();
     // return a boolean reflecting
-    // whether or not the token is expired
+    // whether the token is expired
     return token == '' ? false : true;
   }
 

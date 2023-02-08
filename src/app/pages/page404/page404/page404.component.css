@@ -55,3 +55,12 @@ body
   0% { transform: rotate(6deg); }
   100% { transform: rotate(-6deg); }
 }
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.row{
+  width: 100%;
+}

@@ -1,0 +1,46 @@
+<div class="header-container">
+  <div class="header-wrap">
+    <div class="header-logo ">
+<!--      <div class="burger">-->
+<!--        <nav class="burger">-->
+<!--          <div class="burger-button">-->
+<!--            <span class="burger-top"></span>-->
+<!--            <span class="burger-middle"></span>-->
+<!--            <span class="burger-bottom"></span>-->
+<!--          </div>-->
+<!--          <div class="burger-menu">-->
+<!--            <a class="nav-menu__button white">Lost animals</a>-->
+<!--            <a class="nav-menu__button white">+Advertise</a>-->
+<!--            <a class="nav-menu__button white">Questions</a>-->
+<!--            <a class="nav-menu__button white" *ngIf="isAdmin">Handle users</a>-->
+<!--          </div>-->
+<!--        </nav>-->
+<!--      </div>-->
+      <a routerLink="/" class="header-logo">
+        <img src="https://via.placeholder.com/50x50.png" class="logo">
+      </a>
+    </div>
+    <div class="nav-container">
+      <nav class="nav-menu">
+        <a class="nav-menu__button white">Lost animals</a>
+        <a class="nav-menu__button white">+Advertise</a>
+        <a class="nav-menu__button white">Questions</a>
+        <a class="nav-menu__button white" *ngIf="isAdmin">Handle users</a>
+      </nav>
+      <div class="language-container">
+        <a class="language white">ua</a>
+        <a class="language white">en</a>
+      </div>
+    </div>
+    <div class="profile">
+<!--      TODO:Fix URL in routerLink for profile-->
+      <app-icon-button class="m-r-10" [inputParameters]="userProfile"></app-icon-button>
+      <ng-container *ngIf="isAuthenticate; else secondState">
+        <app-icon-button (click)="logout()" [inputParameters]="logoutIcon"></app-icon-button>
+      </ng-container>
+      <ng-template #secondState>
+        <app-icon-button [inputParameters]="loginIcon"></app-icon-button>
+      </ng-template>
+    </div>
+  </div>
+</div>

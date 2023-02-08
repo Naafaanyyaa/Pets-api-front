@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {IInput} from "../../../models/input.interface";
+import {IInput} from "../../../component-iterfaces/input.interface";
 import {faEye, faSignature, faUser, faEnvelope} from "@fortawesome/free-solid-svg-icons";
 import {UserService} from "../../../shared/services/user.service";
 import {RegistrationRequestModel} from "../../../models/registrationRequestModel.interface";
