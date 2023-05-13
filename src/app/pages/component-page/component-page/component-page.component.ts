@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {IIconButton} from "../../../component-iterfaces/icon-button.interface";
+import {IIconButton} from "../../../shared/components/icon-button/models/icon-button.interface";
 import {faEye} from "@fortawesome/free-solid-svg-icons";
+import {MainButtonInterface} from "../../../shared/components/main-button/models/main-button.interface";
 
 @Component({
   selector: 'app-component-page',
@@ -8,14 +9,14 @@ import {faEye} from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./component-page.component.css']
 })
 export class ComponentPageComponent implements OnInit{
-  public iconProp : IIconButton = {
-    classes: "default",
+
+  public inputParameters: MainButtonInterface = {
+    classes: "dark",
     icon: faEye,
-    isOutside: true,
-    link: "https://www.instagram.com/"
-
+    link: "/lol",
+    size: "small",
+    text: "Edit"
   }
-
   ngOnInit(): void {
   }
 }

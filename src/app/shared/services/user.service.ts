@@ -16,7 +16,7 @@ export class UserService{
 
   loginUser(user:AuthenticationRequestModel):Observable<AuthenticationResponseModel>{
     const body = {userName:user.name, password:user.password};
-    return this.http.post<AuthenticationResponseModel>(`${this.api}/api/Login/Login`, body);
+    return this.http.post<AuthenticationResponseModel>(`${this.api}/api/Authentication/Login`, body);
   }
 
   //TODO: do logout method
@@ -54,6 +54,6 @@ export class UserService{
       Password: user.Password,
       Role: 100
     }
-    return this.http.post<IUserResponse>(`${this.api}/api/Login/Register`, body);
+    return this.http.post<IUserResponse>(`${this.api}/api/Authentication/Register`, body);
   }
 }

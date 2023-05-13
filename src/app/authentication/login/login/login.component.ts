@@ -2,12 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {AuthenticationRequestModel} from "../../../models/authenticationRequestModel.interface";
 import {AuthenticationResponseModel} from "../../../models/authenticationResponseModel.interface";
-import {IInput} from "../../../component-iterfaces/input.interface";
+import {IInput} from "../../../shared/components/input/models/input.interface";
 import {UserService} from "../../../shared/services/user.service";
 import {faEye, faUser, faPerson} from "@fortawesome/free-solid-svg-icons";
 import {Router} from "@angular/router";
 import jwt_decode from 'jwt-decode';
 import {CookieService} from "ngx-cookie-service";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,8 @@ export class LoginComponent implements OnInit{
     icon: faEye,
     isChangingType : true
   }
-  constructor(private authService: UserService, private CookieService : CookieService, private router: Router) {}
+
+  constructor(private authService: UserService, private CookieService : CookieService, private router: Router,  private toastr: ToastrService) {}
   ngOnInit() {
     this.loginForm = new FormGroup({
       "username": new FormControl("", Validators.required),
@@ -67,15 +69,10 @@ export class LoginComponent implements OnInit{
 
       this.CookieService.set('token', token, exp);
       this.CookieService.set('user', JSON.stringify(userInfo), exp);
-
-      //TODO: important, how to get user info
-      // console.log(JSON.parse(this.CookieService.get('user')));
     } catch(Error) {
       console.log(Error)
     }
   }
-
-
 
   submit = (loginFormValue:any) => {
 
@@ -87,10 +84,16 @@ export class LoginComponent implements OnInit{
       password: login.password
     }
 
+
+
     this.authService.loginUser(userObject).subscribe({
       next:(data:AuthenticationResponseModel) => {
-        this.saveToCookieStorage(data.token);
-        this.router.navigate(["/"]);
+        if (data.isAuthSuccessful) {
+          this.saveToCookieStorage(data.token);
+          this.router.navigate(["/"]);
+        } else {
+          this.toastr.error(data.errorMessage);
+        }
       },
       error: error => console.log(error)
     });

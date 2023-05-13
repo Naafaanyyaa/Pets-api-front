@@ -8,6 +8,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'profile/undefined',
+    redirectTo: 'profile',
+    pathMatch: 'full'
+  },
+  {
     path: 'home',
     loadChildren: () => import('./hello-page/hello-page.module').then(m => m.HelloPageModule)
   },
@@ -22,6 +27,10 @@ const routes: Routes = [
   {
     path: 'components',
     loadChildren: () => import('./pages/component-page/component-page.module').then(m => m.ComponentPageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule)
   },
   {
     path: '**',

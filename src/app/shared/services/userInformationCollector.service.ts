@@ -2,16 +2,16 @@
 import {Injectable} from "@angular/core";
 import {CookieService} from "ngx-cookie-service";
 import {UserInfoFromTokenModelInterface} from "../../models/userInfoFromTokenModel.interface";
+import {UserService} from "./user.service";
 
 @Injectable()
 export class UserInformationCollectorService{
 
-  constructor(private cookieService: CookieService) {
+  constructor(private userService: UserService, private cookieService: CookieService) {
   }
   public get userInfo():any{
-    const userInfo = this.cookieService.get('user');
-    if (userInfo){
-      return JSON.parse(userInfo);
+    if (this.userService.isAuthenticated()){
+      return JSON.parse(this.cookieService.get('user'));
     }
     return null;
   }

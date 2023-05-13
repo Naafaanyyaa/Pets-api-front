@@ -7,6 +7,4 @@ export interface IIconButton{
   classes: "default" | "instagram",
 }
 
-export interface IIconButton{
-}
 

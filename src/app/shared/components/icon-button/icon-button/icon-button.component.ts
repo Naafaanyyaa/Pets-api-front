@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IIconButton} from "../../../../component-iterfaces/icon-button.interface";
-import {IInput} from "../../../../component-iterfaces/input.interface";
+import {IIconButton} from "../models/icon-button.interface";
+import {IInput} from "../../input/models/input.interface";
 
 @Component({
   selector: 'app-icon-button',
@@ -11,7 +11,6 @@ export class IconButtonComponent implements OnInit{
   ngOnInit(): void {
   }
   private componentParameters!: IIconButton;
-  @Input() icon?: string;
   @Input() set inputParameters(value: IIconButton) {
     this.componentParameters = value;
   }
