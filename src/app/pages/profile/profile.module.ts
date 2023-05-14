@@ -17,8 +17,8 @@ import {ProfileEditComponent} from "./profile-edit/profile-edit.component";
     imports: [
         CommonModule,
         RouterModule.forChild([
-          {path: 'profile/:id', component: ProfileComponent},
-          {path: 'profile/edit/:id', component: ProfileEditComponent}
+          {path: 'profile', component: ProfileComponent},
+          {path: 'profile/edit', component: ProfileEditComponent}
         ]),
         HeaderModule,
         MainButtonModule,

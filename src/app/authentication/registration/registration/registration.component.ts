@@ -5,6 +5,7 @@ import {faEye, faSignature, faUser, faEnvelope} from "@fortawesome/free-solid-sv
 import {UserService} from "../../../shared/services/user.service";
 import {RegistrationRequestModel} from "../../../models/registrationRequestModel.interface";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-registration',
@@ -53,7 +54,7 @@ export class RegistrationComponent implements OnInit{
     icon: faEnvelope,
     isChangingType : false
   }
-  constructor(private authService: UserService, private router: Router) {}
+  constructor(private authService: UserService, private router: Router,  private toastr: ToastrService) {}
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
       "username": new FormControl("", [Validators.required, Validators.minLength(8)]),
@@ -84,8 +85,19 @@ export class RegistrationComponent implements OnInit{
     }
 
     this.authService.registerUser(registrationRequest).subscribe({
-      next:() => {this.router.navigate(["/login"])},
-      error: error => console.log(error)
+      next:() => {
+
+        this.toastr.success("Registration success");
+        this.router.navigate(["/login"])
+      },
+      error: error => {
+        if (error.error instanceof ErrorEvent) {
+          console.log('An error occurred:', error.error.message);
+        } else {
+          console.log(`Server returned code ${error.status}, error message is: ${error.error}`);
+          this.toastr.error(error.error);
+        }
+      }
     });
   }
 }

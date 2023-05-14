@@ -90,6 +90,7 @@ export class LoginComponent implements OnInit{
       next:(data:AuthenticationResponseModel) => {
         if (data.isAuthSuccessful) {
           this.saveToCookieStorage(data.token);
+          this.toastr.success("Success");
           this.router.navigate(["/"]);
         } else {
           this.toastr.error(data.errorMessage);

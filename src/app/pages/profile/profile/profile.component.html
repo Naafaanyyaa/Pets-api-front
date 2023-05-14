@@ -2,10 +2,8 @@
 <div class="user-profile-wrapper" *ngIf="isUserExists">
   <div class="user-profile-content">
     <div class="user-profile__header">
-      <div class="user-profile__photo">
-        <img src="https://via.placeholder.com/50x50.png" class="user-photo">
-      </div>
-      <h2 class="header" *ngIf="userId">{{userInfo.firstName}} {{userInfo.lastName}}</h2>
+      <h2>Hello</h2>
+      <h2>{{userInfo.firstName}} {{userInfo.lastName}}</h2>
     </div>
     <div class="personal-data m-b-15">
       <div class="block username m-b-10">
@@ -15,19 +13,10 @@
         <span class="first-line m-b-3">Email</span>
         <span class="second-line">{{userInfo.email}}</span>
       </div>
-      <div class="block phone m-b-10">
-        <span class="first-line m-b-3">Phone</span>
-        <span class="second-line">
-          <ng-template *ngIf="userInfo.phone; else isNotAvailablePhone">{{userInfo.phone}}</ng-template>
-          <ng-template #isNotAvailablePhone>None</ng-template>
-        </span>
-      </div>
       <div class="block subscription m-b-10">
-        <span class="first-line m-b-3">Subscription date</span>
-        <span class="second-line">
-          <ng-template *ngIf="userInfo.subscription; else isNotAvailableSub">{{userInfo.phone}}</ng-template>
-          <ng-template #isNotAvailableSub>None</ng-template>
-        </span>
+        <span class="first-line m-b-3">Has subscription</span>
+        <span *ngIf="isUserIsHospitalHost" class="isNotBanned">Yes</span>
+        <span *ngIf="!isUserIsHospitalHost" class="isNotBanned">No</span>
       </div>
       <div>
         <ng-template *ngIf="userInfo.isBanned; else isBanned"><span class="isBanned">Banned</span></ng-template>
@@ -35,8 +24,12 @@
       </div>
     </div>
     <div class="buttons">
-      <app-main-button [inputParameters]="editButton"></app-main-button>
-      <app-main-button [inputParameters]="deleteButton"></app-main-button>
+      <app-main-button [inputParameters]="editButton" (click)="editUserAccount()"></app-main-button>
+      <app-main-button [inputParameters]="changePasswordButton" (click)="editPasswordAccount()"></app-main-button>
+      <app-main-button [inputParameters]="deleteButton" (click)="deleteUserAccount()"></app-main-button>
     </div>
   </div>
+</div>
+<div class="user-profile-wrapper" *ngIf="!isUserExists">
+  <h2>User does not exist</h2>
 </div>

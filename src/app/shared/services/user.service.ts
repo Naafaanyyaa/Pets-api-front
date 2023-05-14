@@ -54,6 +54,6 @@ export class UserService{
       Password: user.Password,
       Role: 100
     }
-    return this.http.post<IUserResponse>(`${this.api}/api/Authentication/Register`, body);
+    return this.http.post<IUserResponse>(`${this.api}/api/Authentication/Registration`, body);
   }
 }

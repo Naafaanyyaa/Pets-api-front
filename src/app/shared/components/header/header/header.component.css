@@ -35,11 +35,11 @@
   margin: 0px 15px;
 }
 .white{
-  color: #f2f2f2;
+  color: #f2f2f2 !important;;
 }
 
 .white:hover {
-  color: #f28830;
+  color: #f28830 !important;;
 }
 .language{
   margin: 0 5px;

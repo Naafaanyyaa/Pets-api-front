@@ -21,7 +21,7 @@ import { ProfileEditComponent } from './pages/profile/profile-edit/profile-edit.
   imports: [
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-top-center',
+      positionClass: 'toast-bottom-right',
       closeButton:true,
       maxOpened:2
     }),

@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ProfileService} from "../profile-service/profile-service.service";
 import {UserProfileModel} from "../models/user-profile.model";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MainButtonInterface} from "../../../shared/components/main-button/models/main-button.interface";
-import {faTrash, faPencil} from "@fortawesome/free-solid-svg-icons";
+import {faTrash, faPencil, faKey} from "@fortawesome/free-solid-svg-icons";
+import {UserService} from "../../../shared/services/user.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-profile',
@@ -14,43 +16,59 @@ import {faTrash, faPencil} from "@fortawesome/free-solid-svg-icons";
 export class ProfileComponent implements OnInit{
 
   public isUserExists : boolean = false;
+  public isUserIsHospitalHost : boolean = false;
   public userInfo!: UserProfileModel;
   public deleteButton: MainButtonInterface = {
     classes: "red",
     icon: faTrash,
-    link: `/`,
     size: "default",
     text: "Delete"
   }
   public editButton: MainButtonInterface = {
     classes: "yellow",
     icon: faPencil,
-    link: `/profile/edit/${this.userId}`,
+    link: `/profile/edit`,
     size: "default",
     text: "Edit"
   }
-
-  public get userId(){
-    return this.route.snapshot.paramMap.get('id')!;
+  public changePasswordButton: MainButtonInterface = {
+    classes: "yellow",
+    icon: faKey,
+    link: `/profile/changePassword`,
+    size: "default",
+    text: "Change password"
   }
-  constructor(private profileService: ProfileService, private route: ActivatedRoute) {
+
+  public get isUserHospitalHost() : boolean{
+    const decodedToken = this.userService.getDecodedAccessToken(this.userService.getToken());
+    const roles = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+
+    return Array.isArray(roles) && roles.includes('HospitalHost');
+  }
+  constructor(private profileService: ProfileService, private route: ActivatedRoute,private router: Router, private  userService: UserService, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
-    this.profileService.getUserProfile(this.userId).subscribe({
+    this.profileService.getUserProfile().subscribe({
       next:(data:UserProfileModel) => {
         this.isUserExists = true;
         this.userInfo = data;
-        console.log("1")
-        console.log(this.userInfo)
+        this.isUserIsHospitalHost = this.isUserHospitalHost;
+        console.log(this.isUserIsHospitalHost)
       },
       error: error => console.log(error)
     })
   }
 
-  // ngOnInit(): void {
-  //   this.userInfo = this.store.selectSnapshot(ProfileState.selectProfile)
-  // }
-
-
+  deleteUserAccount() : void{
+    this.toastr.warning("Account deleted");
+    this.profileService.deleteUserProfile();
+    this.router.navigate(["/login"]);
+  }
+  editUserAccount(): void {
+    console.log("deleted")
+  }
+  editPasswordAccount(): void {
+    console.log("deleted")
+  }
 }

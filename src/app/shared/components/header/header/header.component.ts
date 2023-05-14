@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
     classes: "default",
     icon: faAddressCard,
     isOutside: false,
-    link: `/profile/${this.userId}`
+    link: `/profile`
   }
 
   //TODO: changeable variables

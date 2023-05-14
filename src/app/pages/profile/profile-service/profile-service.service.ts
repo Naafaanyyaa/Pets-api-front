@@ -10,9 +10,22 @@ import {UserProfileModel} from "../models/user-profile.model";
 })
 export class ProfileService{
   private readonly api = environment.urlAddress;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , private cookieService: CookieService) { }
 
-  getUserProfile(userId:string):Observable<UserProfileModel>{
-    return this.http.get<UserProfileModel>(`${this.api}/api/Account/get-account/${userId}`);
+  getUserProfile():Observable<UserProfileModel>{
+    return this.http.get<UserProfileModel>(`${this.api}/api/User/GetUserInfo`);
+  }
+
+  deleteUserProfile() : void{
+    this.http.delete(`${this.api}/api/User/DeleteAccount`).subscribe(
+      () => {
+        // Success handler
+        this.cookieService.deleteAll();
+      },
+      (error) => {
+        // Error handler
+        console.error(error);
+      }
+    );
   }
 }
