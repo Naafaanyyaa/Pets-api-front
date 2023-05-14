@@ -12,6 +12,9 @@ import {AppRoutingModule} from "./app-routing.module";
 import {Page404Module} from "./pages/page404/page404.module";
 import {LoginModule} from "./authentication/login/login.module";
 import { ProfileEditComponent } from './pages/profile/profile-edit/profile-edit.component';
+import {HeaderModule} from "./shared/components/header/header.module";
+import {MainButtonModule} from "./shared/components/main-button/main-button.module";
+import {InputModule} from "./shared/components/input/input.module";
 
 @NgModule({
   declarations: [
@@ -22,8 +25,8 @@ import { ProfileEditComponent } from './pages/profile/profile-edit/profile-edit.
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
-      closeButton:true,
-      maxOpened:2
+      closeButton: true,
+      maxOpened: 2
     }),
     BrowserModule,
     FormsModule,
@@ -32,7 +35,10 @@ import { ProfileEditComponent } from './pages/profile/profile-edit/profile-edit.
     FontAwesomeModule,
     AppRoutingModule,
     Page404Module,
-    LoginModule
+    LoginModule,
+    HeaderModule,
+    MainButtonModule,
+    InputModule
   ],
   providers: [UserService,
     {

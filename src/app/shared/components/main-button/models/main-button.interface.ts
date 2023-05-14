@@ -6,4 +6,5 @@ export interface MainButtonInterface{
   link?: string;
   classes: "red" | "yellow" | "green" | "dark";
   size: "default" | "small" | "big" ;
+
 }

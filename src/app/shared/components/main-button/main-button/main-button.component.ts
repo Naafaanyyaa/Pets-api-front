@@ -11,6 +11,7 @@ export class MainButtonComponent implements OnInit{
   }
   private componentParameters!: MainButtonInterface;
   @Input() disabled: boolean = false;
+  @Input() type? : string;
   @Input() set inputParameters(value: MainButtonInterface) {
     this.componentParameters = value;
   }

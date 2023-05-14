@@ -1,4 +1,4 @@
-<button *ngIf="inputParameters.link" [disabled]="disabled" [routerLink]="[inputParameters.link]" class="custom-button" [ngClass]="{
+<button *ngIf="inputParameters.link" [type]="type" [disabled]="disabled" [routerLink]="[inputParameters.link]" class="custom-button" [ngClass]="{
   default: inputParameters.size === 'default',
   small: inputParameters.size === 'small',
   big: inputParameters.size === 'big',
@@ -13,7 +13,7 @@
   </div>
 </button>
 
-<button *ngIf="!inputParameters.link" [disabled]="disabled" class="custom-button" [ngClass]="{
+<button *ngIf="!inputParameters.link" [type]="type" [disabled]="disabled" class="custom-button" [ngClass]="{
   default: inputParameters.size === 'default',
   small: inputParameters.size === 'small',
   big: inputParameters.size === 'big',

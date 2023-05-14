@@ -1,7 +1,6 @@
-export interface UserProfileModel{
+export interface UserEditRequest{
   userName: string;
   email : string;
-  isBanned: boolean;
   firstName : string;
   lastName : string;
 }
