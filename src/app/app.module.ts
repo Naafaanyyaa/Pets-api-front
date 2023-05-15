@@ -18,8 +18,7 @@ import {InputModule} from "./shared/components/input/input.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProfileEditComponent
+    AppComponent
   ],
   imports: [
     BrowserAnimationsModule,

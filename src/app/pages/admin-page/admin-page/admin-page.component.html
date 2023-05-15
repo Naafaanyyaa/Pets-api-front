@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="main-wrapper">
+  <div class="container">
+    <div class="wrapper">
+      <div class="searching_field m-b-20">
+        <input type="text" class="form-control" placeholder="Username" id="username">
+        <input type="text" class="form-control" placeholder="Email" id="email">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" (click)="filterUser()">Search</button>
+        </div>
+      </div>
+      <div class="content">
+        <div *ngFor="let item of userList">
+          <div class="item-wrapper m-b-20">
+            <div class="name">{{item.firstName}} {{item.lastName}}</div>
+            <div class="info">
+              <div class="info-items">
+                <div class="mail">
+                  Email: {{item.email}}
+                </div>
+                <div class="username">
+                  Username: {{item.userName}}
+                </div>
+                <div class="ban">
+                  Has ban: {{item.isBanned}}
+                </div>
+              </div>
+              <div class="input-group-append">
+                <button class="btn btn-primary yellow" type="button" (click)="changeUserRole(item.id)">Change role</button>
+                <button *ngIf="item.isBanned" class="btn btn-primary green" type="button" (click)="banUser(item.id)">Unban user</button>
+                <button *ngIf="!item.isBanned" class="btn btn-primary red" type="button" (click)="banUser(item.id)">Ban user</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

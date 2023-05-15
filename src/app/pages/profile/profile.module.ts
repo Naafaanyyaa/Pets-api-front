@@ -16,6 +16,7 @@ import {InputModule} from "../../shared/components/input/input.module";
 @NgModule({
   declarations: [
     ProfileComponent,
+    ProfileEditComponent,
     ProfileEditPasswordComponent
   ],
   imports: [

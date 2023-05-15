@@ -56,7 +56,7 @@
 @media screen and (max-width: 900px) {
   .nav-container{
     position: absolute;
-    visibility: hidden;
+    display: none;
   }
   .burger{
     position: relative;

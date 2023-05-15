@@ -9,7 +9,6 @@ import {
 import {Injectable} from "@angular/core";
 import {Observable, tap} from "rxjs";
 import {UserService} from "./user.service";
-import {CookieService} from "ngx-cookie-service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

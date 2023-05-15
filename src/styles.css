@@ -144,3 +144,11 @@ main{
   background-color:#141019;
   background: radial-gradient(at 50% -20%, #908392, #0d060e) fixed;
 }
+.main-wrapper{
+  padding: 15px;
+}
+@media screen and (max-width: 600px) {
+  .main-wrapper{
+    padding: 5px;
+  }
+}
