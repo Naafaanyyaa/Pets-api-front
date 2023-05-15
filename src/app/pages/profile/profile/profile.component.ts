@@ -3,7 +3,7 @@ import {ProfileService} from "../profile-service/profile-service.service";
 import {UserProfileModel} from "../models/user-profile.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MainButtonInterface} from "../../../shared/components/main-button/models/main-button.interface";
-import {faTrash, faPencil, faKey} from "@fortawesome/free-solid-svg-icons";
+import {faTrash, faPencil, faKey, faMoneyBill} from "@fortawesome/free-solid-svg-icons";
 import {UserService} from "../../../shared/services/user.service";
 import {ToastrService} from "ngx-toastr";
 
@@ -30,6 +30,12 @@ export class ProfileComponent implements OnInit{
     link: `/profile/edit`,
     size: "default",
     text: "Edit"
+  }
+  public subscriptionButton: MainButtonInterface = {
+    classes: "green",
+    icon: faMoneyBill,
+    size: "default",
+    text: "Create subscription"
   }
   public changePasswordButton: MainButtonInterface = {
     classes: "yellow",

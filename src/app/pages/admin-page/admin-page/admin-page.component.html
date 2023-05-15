@@ -11,6 +11,32 @@
       </div>
       <div class="content">
         <div *ngFor="let item of userList">
+
+          <div class="modal fade" [id]="'exampleModal' + item.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Change Role for {{item.firstName}} {{item.lastName}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="selectedRole">
+                    <option *ngIf="userRole" [value]="userRole">User</option>
+                    <option *ngIf="doctor" [value]="doctor">Doctor</option>
+                    <option *ngIf="hospitalHost" [value]="hospitalHost">Hospital</option>
+                    <option *ngIf="adminRole" [value]="adminRole">Admin</option>
+                  </select>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="changeUserRole(item.id, selectedRole)">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="item-wrapper m-b-20">
             <div class="name">{{item.firstName}} {{item.lastName}}</div>
             <div class="info">
@@ -26,7 +52,7 @@
                 </div>
               </div>
               <div class="input-group-append">
-                <button class="btn btn-primary yellow" type="button" (click)="changeUserRole(item.id)">Change role</button>
+                <button class="btn btn-primary yellow" type="button" data-toggle="modal" [attr.data-target]="'#exampleModal' + item.id">Change role</button>
                 <button *ngIf="item.isBanned" class="btn btn-primary green" type="button" (click)="banUser(item.id)">Unban user</button>
                 <button *ngIf="!item.isBanned" class="btn btn-primary red" type="button" (click)="banUser(item.id)">Ban user</button>
               </div>
@@ -37,3 +63,33 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel">Changing role</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="selectedRole">-->
+<!--          <option *ngIf="userRole" [value]="userRole">User</option>-->
+<!--          <option *ngIf="doctor" [value]="doctor">Doctor</option>-->
+<!--          <option *ngIf="hospitalHost" [value]="hospitalHost">Hospital</option>-->
+<!--          <option *ngIf="adminRole" [value]="adminRole">Admin</option>-->
+<!--        </select>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--&lt;!&ndash;        <button type="button" class="btn btn-primary" (click)="changeUserRole(item.id, selectedRole)">Save</button>&ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

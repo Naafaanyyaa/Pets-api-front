@@ -6,6 +6,7 @@ import {ToastrService} from "ngx-toastr";
 import {AdminService} from "../services/admin-service.service";
 import {UserProfileModel} from "../../profile/models/user-profile.model";
 import {AuthenticationResponseModel} from "../../../models/authenticationResponseModel.interface";
+import {RoleEnum} from "../models/role-enum.model";
 
 @Component({
   selector: 'app-admin-page',
@@ -14,6 +15,11 @@ import {AuthenticationResponseModel} from "../../../models/authenticationRespons
 })
 export class AdminPageComponent implements OnInit{
   public userList? : UserProfileModel[];
+  public selectedRole?: RoleEnum;
+  public userRole: RoleEnum = RoleEnum.User;
+  public adminRole: RoleEnum = RoleEnum.Admin;
+  public hospitalHost: RoleEnum = RoleEnum.HospitalHost;
+  public doctor: RoleEnum = RoleEnum.Doctor;
   constructor(private adminService: AdminService, private route: ActivatedRoute,private router: Router, private toastr: ToastrService, private cdRef: ChangeDetectorRef) {
   }
   ngOnInit(): void {
@@ -54,7 +60,14 @@ export class AdminPageComponent implements OnInit{
     });
   }
 
-  changeUserRole(userId: string): void {
-    this.router.navigate(['/change-role'], { queryParams: { id: userId } });
+  changeUserRole(userId: string, role?: RoleEnum): void {
+    this.adminService.changeRole(userId, role).subscribe({
+      next: () => {
+        this.toastr.success("Role changed")
+      },
+      error: err => {
+        this.toastr.error(err.error)
+      }
+    });
   }
 }

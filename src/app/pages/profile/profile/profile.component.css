@@ -40,7 +40,9 @@
 }
 .buttons{
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: end;
 }
 .block{
   display: flex;
@@ -61,3 +63,9 @@
   background-color: #bebebb;
   border-radius: 5px;
 }
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
