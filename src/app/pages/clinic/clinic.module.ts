@@ -10,6 +10,7 @@ import {UserInformationCollectorService} from "../../shared/services/userInforma
 import { ClinicViewPageComponent } from './clinic-view-page/clinic-view-page.component';
 import { ClinicAddPageComponent } from './clinic-add-page/clinic-add-page.component';
 import { ClinicUpdateComponent } from './clinic-update/clinic-update.component';
+import { ClinicRegisterDoctorComponent } from './clinic-register-doctor/clinic-register-doctor.component';
 
 
 
@@ -18,7 +19,8 @@ import { ClinicUpdateComponent } from './clinic-update/clinic-update.component';
     ClinicListComponent,
     ClinicViewPageComponent,
     ClinicAddPageComponent,
-    ClinicUpdateComponent
+    ClinicUpdateComponent,
+    ClinicRegisterDoctorComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,7 @@ import { ClinicUpdateComponent } from './clinic-update/clinic-update.component';
       {path: 'clinic-list', component: ClinicListComponent},
       {path: 'clinic/:id', component: ClinicViewPageComponent},
       {path: 'add-clinic', component: ClinicAddPageComponent},
-      {path: 'update-clinic/:id', component: ClinicAddPageComponent},
+      {path: 'update-clinic/:id', component: ClinicUpdateComponent},
     ]),
     HeaderModule,
     MainButtonModule,

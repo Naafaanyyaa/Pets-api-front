@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="user-profile-wrapper">
+  <form class="login100-form validate-form" [formGroup]="editClinicForm" novalidate (ngSubmit)="submit(editClinicForm.value)">
+    <app-input
+      type="text"
+      id="name"
+      formControlName="name"
+      [(ngModel)]="clinicInfo.name"
+      [inputParameters]="nameConfig"></app-input>
+    <div class="exception m-b-10 color-red f-s-8">
+      <span *ngIf="validateControl('name')" class="color-red">*Email is incorrect</span>
+    </div>
+    <app-input
+      type="text"
+      id="description"
+      formControlName="description"
+      [(ngModel)]="clinicInfo.description"
+      [inputParameters]="descriptionConfig"></app-input>
+    <div class="exception m-b-10 color-red f-s-8">
+      <span *ngIf="validateControl('description')" class="color-red">*Firstname must contain >2 symbols</span>
+    </div>
+    <app-input
+      type="text"
+      id="address"
+      formControlName="address"
+      [(ngModel)]="clinicInfo.address"
+      [inputParameters]="addressConfig"></app-input>
+    <div class="exception m-b-10 color-red f-s-8">
+      <span *ngIf="validateControl('address')" class="color-red">*Lastname must contain >2 symbols</span>
+    </div>
+    <app-input
+      type="text"
+      id="phone"
+      formControlName="phone"
+      [(ngModel)]="clinicInfo.phone"
+      [inputParameters]="phoneConfig"></app-input>
+    <div class="exception m-b-10 color-red f-s-8">
+      <span *ngIf="validateControl('phone')" class="color-red">*Job title is required</span>
+    </div>
+    <div class="buttons">
+      <app-main-button type="submit" [inputParameters]="confirmButton" [disabled]="editClinicForm.invalid" ></app-main-button>
+      <app-main-button [inputParameters]="cancelButton" (click)="cancel()"></app-main-button>
+    </div>
+  </form>
+</div>
+
