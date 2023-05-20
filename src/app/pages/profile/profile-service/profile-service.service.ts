@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import {UserProfileModel} from "../models/user-profile.model";
 import {UserEditRequest} from "../models/user-edit-request.model";
 import {UserPasswordRequest} from "../models/user-password-request.model";
+import {SubLinkResponse} from "../models/sub-ink.model";
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,9 @@ export class ProfileService{
   editUserPassword(user: UserPasswordRequest):Observable<UserProfileModel>{
     const body = {oldPassword:user.oldPassword, newPassword:user.newPassword};
     return this.http.patch<UserProfileModel>(`${this.api}/api/User/UpdatePassword`, body);
+  }
+  createSubscription(): Observable<SubLinkResponse>{
+    const body = {type: 10}
+    return this.http.post<SubLinkResponse>(`${this.api}/api/PayPal/CreatePayment`, body);
   }
 }

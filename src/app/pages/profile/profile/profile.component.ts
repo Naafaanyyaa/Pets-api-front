@@ -34,6 +34,7 @@ export class ProfileComponent implements OnInit{
   public subscriptionButton: MainButtonInterface = {
     classes: "green",
     icon: faMoneyBill,
+    link: "/payer-page",
     size: "default",
     text: "Create subscription"
   }

@@ -10,6 +10,7 @@ import {ProfileEditComponent} from "./profile-edit/profile-edit.component";
 import { ProfileEditPasswordComponent } from './profile-edit-password/profile-edit-password.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InputModule} from "../../shared/components/input/input.module";
+import { PayPalPageComponent } from './pay-pal-page/pay-pal-page.component';
 
 
 
@@ -17,14 +18,16 @@ import {InputModule} from "../../shared/components/input/input.module";
   declarations: [
     ProfileComponent,
     ProfileEditComponent,
-    ProfileEditPasswordComponent
+    ProfileEditPasswordComponent,
+    PayPalPageComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {path: 'profile', component: ProfileComponent},
       {path: 'profile/edit', component: ProfileEditComponent},
-      {path: 'profile/changePassword', component: ProfileEditPasswordComponent}
+      {path: 'profile/changePassword', component: ProfileEditPasswordComponent},
+      {path: 'payer-page', component: PayPalPageComponent}
     ]),
     HeaderModule,
     MainButtonModule,

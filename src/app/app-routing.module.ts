@@ -37,6 +37,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin-page/admin-page.module').then(m => m.AdminPageModule)
   },
   {
+    path: '',
+    loadChildren: () => import('./pages/clinic/clinic.module').then(m => m.ClinicModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/page404/page404.module').then(m => m.Page404Module)
   },

@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="main-wrapper">
+  <div class="container">
+    <div class="wrapper">
+      <div class="searching_field m-b-20">
+        <input type="text" class="form-control" placeholder="Searching string" id="searchingString">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" (click)="filterClinic()">Search</button>
+        </div>
+      </div>
+      <div class="content">
+        <div *ngFor="let item of clinicList">
+          <div class="item-wrapper m-b-20">
+            <div class="name">{{item.name}}</div>
+            <div class="info">
+              <div class="info-items">
+                <div class="mail">
+                  Address: {{item.address}}
+                </div>
+                <div class="username">
+                  Description: {{item.description}}
+                </div>
+                <div class="ban">
+                  Phone: {{item.phone}}
+                </div>
+              </div>
+              <div class="input-group-append">
+                <button class="btn btn-primary green" type="button" (click)="getClinic(item.id)">View clinic</button>
+                <button *ngIf="item.isBanned && isAdmin" class="btn btn-primary green" type="button" (click)="banClinic(item.id)">Unban clinic</button>
+                <button *ngIf="!item.isBanned && isAdmin" class="btn btn-primary red" type="button" (click)="banClinic(item.id)">Ban clinic</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

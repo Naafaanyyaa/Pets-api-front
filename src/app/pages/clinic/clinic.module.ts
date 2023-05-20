@@ -1,27 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminPageComponent } from './admin-page/admin-page.component';
+import { ClinicListComponent } from './clinic-list/clinic-list.component';
+import {RouterModule} from "@angular/router";
 import {HeaderModule} from "../../shared/components/header/header.module";
 import {MainButtonModule} from "../../shared/components/main-button/main-button.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InputModule} from "../../shared/components/input/input.module";
-import {RouterModule} from "@angular/router";
+import {UserInformationCollectorService} from "../../shared/services/userInformationCollector.service";
+import { ClinicViewPageComponent } from './clinic-view-page/clinic-view-page.component';
+
 
 
 @NgModule({
   declarations: [
-    AdminPageComponent
+    ClinicListComponent,
+    ClinicViewPageComponent
   ],
   imports: [
     CommonModule,
-    HeaderModule,
     RouterModule.forChild([
-      {path: 'admin-panel', component: AdminPageComponent},
+      {path: 'clinic-list', component: ClinicListComponent}
     ]),
+    HeaderModule,
     MainButtonModule,
     FormsModule,
     InputModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
+  providers: [UserInformationCollectorService],
 })
-export class AdminPageModule { }
+export class ClinicModule { }

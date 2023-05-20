@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div class="wrapper">
+  <div class="pricing-table">
+    <div class="container">
+      <div class="pricing-box pricing-table-best">
+        <h2>Advanced Membership</h2>
+        <span class="price">$100/unlimited</span>
+        <p class="description">Suitable for entrepreneurs with their own clinic</p>
+        <span class="pricing-table-divider"></span>
+        <div class="button-container">
+          <app-main-button [inputParameters]="subscriptionButton" (click)="createsubscription()"></app-main-button>
+        </div>
+        <span class="pricing-table-divider"></span>
+        <ul>
+          <li>Hospital host member</li>
+          <li>Allowed to create clinic</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
