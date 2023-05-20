@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="main-wrapper">
+  <div class="container">
+    <div class="wrapper">
+      <div class="content">
+        <h1>{{clinicData?.name}}</h1>
+        <div class="content">
+          <div class="description">
+            Description: {{clinicData?.description}}
+          </div>
+          <div class="contacts">
+            <div class="phone">
+              Phone: {{clinicData?.phone}}
+            </div>
+            <div class="address">
+              Address: {{clinicData?.address}}
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <button class="btn btn-primary green" type="button" (click)="createDoctor()">Add doctor</button>
+          <button class="btn btn-primary yellow" type="button" (click)="updateClinic()">Update clinic</button>
+          <button class="btn btn-primary red" type="button" (click)="deleteClinic()">Delete clinic</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -34,8 +34,8 @@ export class ClinicService {
     const body = {name: clinicData.name, address: clinicData.address, description: clinicData.description, phone: clinicData.phone}
     return this.http.post<ClinicResponseModel>(`${this.api}/api/Clinic/Add`, body);
   }
-  deleteClinic(clinicId: string): void{
-    this.http.delete(`${this.api}/api/Clinic/Delete/${clinicId}`)
+  deleteClinic(clinicId: string): Observable<void>{
+    return this.http.delete<void>(`${this.api}/api/Clinic/Delete/${clinicId}`)
   }
   updateClinic(clinicData: ClinicRequestBodyModel, clinicId: string): Observable<ClinicResponseModel>{
     const body = {name: clinicData.name, address: clinicData.address, description: clinicData.description, phone: clinicData.phone}

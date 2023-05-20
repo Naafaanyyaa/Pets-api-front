@@ -63,4 +63,7 @@ export class ClinicListComponent implements OnInit{
   getClinic(clinicId: string) : void{
     this.router.navigate([`clinic/${clinicId}`]);
   }
+  addClinic(): void{
+    this.router.navigate([`add-clinic`])
+  }
 }
