@@ -7,6 +7,7 @@ import {ClinicResponseModel} from "../models/ClinicResponse.model";
 import {ClinicRequestBodyModel} from "../models/ClinicRequestBody.model";
 import {RegistrationRequestModel} from "../../../models/registrationRequestModel.interface";
 import {IUserResponse} from "../../../models/IUserResponseModel.interface";
+import {DoctorRequestModel} from "../models/DoctorRequest.model";
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +42,8 @@ export class ClinicService {
     const body = {name: clinicData.name, address: clinicData.address, description: clinicData.description, phone: clinicData.phone}
     return this.http.put<ClinicResponseModel>(`${this.api}/api/Clinic/Update/${clinicId}`, body);
   }
-  createDoctor(doctorData: RegistrationRequestModel, clinicId: string): Observable<IUserResponse>{
-    const body = {firstname: doctorData.Firstname, lastname: doctorData.Lastname, userName: doctorData.UserName, email: doctorData.Email, password: doctorData.Password}
-    return this.http.post<IUserResponse>(`${this.api}/api/Clinic/CreateDoctor/${clinicId}`, body)
+  createDoctor(doctorData: DoctorRequestModel, clinicId: string): Observable<ClinicResponseModel>{
+    const body = {firstname: doctorData.firstname, lastname: doctorData.lastname, userName: doctorData.userName, email: doctorData.email, password: doctorData.password}
+    return this.http.post<ClinicResponseModel>(`${this.api}/api/Clinic/CreateDoctor/${clinicId}`, body)
   }
 }

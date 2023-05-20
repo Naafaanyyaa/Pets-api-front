@@ -48,6 +48,9 @@
 .green{
   background-color: #3d6606;
 }
+.row{
+  display: flex;
+}
 @media screen and (max-width: 600px) {
   .main-wrapper{
     padding: 5px;

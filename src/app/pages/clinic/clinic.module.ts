@@ -11,6 +11,7 @@ import { ClinicViewPageComponent } from './clinic-view-page/clinic-view-page.com
 import { ClinicAddPageComponent } from './clinic-add-page/clinic-add-page.component';
 import { ClinicUpdateComponent } from './clinic-update/clinic-update.component';
 import { ClinicRegisterDoctorComponent } from './clinic-register-doctor/clinic-register-doctor.component';
+import {LoginButtonModule} from "../../shared/components/login-button/login-button.module";
 
 
 
@@ -29,12 +30,14 @@ import { ClinicRegisterDoctorComponent } from './clinic-register-doctor/clinic-r
       {path: 'clinic/:id', component: ClinicViewPageComponent},
       {path: 'add-clinic', component: ClinicAddPageComponent},
       {path: 'update-clinic/:id', component: ClinicUpdateComponent},
+      {path: 'clinic/add-doctor/:id', component: ClinicRegisterDoctorComponent},
     ]),
     HeaderModule,
     MainButtonModule,
     FormsModule,
     InputModule,
     ReactiveFormsModule,
+    LoginButtonModule,
   ],
   providers: [UserInformationCollectorService],
 })
