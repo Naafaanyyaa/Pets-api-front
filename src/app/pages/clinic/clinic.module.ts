@@ -39,6 +39,6 @@ import {LoginButtonModule} from "../../shared/components/login-button/login-butt
     ReactiveFormsModule,
     LoginButtonModule,
   ],
-  providers: [UserInformationCollectorService],
+  providers: [UserInformationCollectorService]
 })
 export class ClinicModule { }

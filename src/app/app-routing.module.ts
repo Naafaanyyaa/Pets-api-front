@@ -41,6 +41,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/clinic/clinic.module').then(m => m.ClinicModule)
   },
   {
+    path: '',
+    loadChildren: () => import('./pages/animal/animal.module').then(m => m.AnimalModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/page404/page404.module').then(m => m.Page404Module)
   },
