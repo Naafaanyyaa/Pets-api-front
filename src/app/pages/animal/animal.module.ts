@@ -9,18 +9,21 @@ import {InputModule} from "../../shared/components/input/input.module";
 import {LoginButtonModule} from "../../shared/components/login-button/login-button.module";
 import {UserInformationCollectorService} from "../../shared/services/userInformationCollector.service";
 import { AnimalAddPageComponent } from './animal-add-page/animal-add-page.component';
+import { AnimalViewComponent } from './animal-view/animal-view.component';
 
 
 
 @NgModule({
   declarations: [
     AnimalListComponent,
-    AnimalAddPageComponent
+    AnimalAddPageComponent,
+    AnimalViewComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {path: 'animal-panel', component: AnimalListComponent},
+      {path: 'add-animal', component: AnimalAddPageComponent},
     ]),
     HeaderModule,
     MainButtonModule,

@@ -33,14 +33,14 @@ export class AnimalService {
     return this.http.delete<void>(`${this.api}/api/Animal/DeleteById/${id}`)
   }
 
-  addAnimal(request: AnimalRequestModel, photo: File):Observable<AnimalResponseModel>{
+  addAnimal(request: AnimalRequestModel, photo?: File):Observable<AnimalResponseModel>{
     const formData = new FormData();
-    formData.append('ClinicId', request.ClinicId);
+    formData.append('ClinicId', request.ClinicId ? request.ClinicId : "");
     formData.append('UserId', request.UserId);
     formData.append('AnimalName', request.AnimalName);
     formData.append('AnimalDescription', request.AnimalDescription);
     formData.append('AnimalType', request.AnimalType.toString());
-    formData.append('photo', photo);
+    formData.append('photo', photo ? photo : "");
 
     return this.http.post<AnimalResponseModel>(`${this.api}/api/Animal/CreateAnimal`, formData);
   }

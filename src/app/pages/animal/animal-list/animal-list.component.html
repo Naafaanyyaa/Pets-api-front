@@ -14,7 +14,7 @@
           <div class="item-wrapper m-b-20">
             <div class="name">{{item.animalName}}</div>
             <div *ngIf="item.photos!.length > 0" class="image">
-              <img [src]="'D:\\Artem\\3_course\\2semestr\\APZ\\Project\\App\\PetHospitalApi\\PetHospitalApi\\' + item.photos![0].photoPath" alt="Animal Photo">
+              <img height="50px" width="50px" [src]="item.photos![0].photoPath" alt="Animal Photo">
             </div>
             <div class="info">
               <div class="info-items">
