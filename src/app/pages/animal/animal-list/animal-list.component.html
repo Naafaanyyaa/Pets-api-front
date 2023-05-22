@@ -10,7 +10,7 @@
         </div>
       </div>
       <div  class="content">
-        <div  *ngFor="let item of animalList">
+        <div  *ngFor="let item of animalList" class="m-b-10">
           <div class="item-wrapper m-b-20">
             <div class="name">{{item.animalName}}</div>
             <div *ngIf="item.photos!.length > 0" class="image">
@@ -26,7 +26,7 @@
                 </div>
               </div>
               <div class="input-group-append">
-                <button class="btn btn-primary green" type="button" (click)="viewAnimal()">View animal</button>
+                <button class="btn btn-primary green" type="button" (click)="viewAnimal(item.id)">View animal</button>
               </div>
             </div>
           </div>

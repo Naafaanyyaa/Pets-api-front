@@ -10,6 +10,7 @@ import {LoginButtonModule} from "../../shared/components/login-button/login-butt
 import {UserInformationCollectorService} from "../../shared/services/userInformationCollector.service";
 import { AnimalAddPageComponent } from './animal-add-page/animal-add-page.component';
 import { AnimalViewComponent } from './animal-view/animal-view.component';
+import { AnimalEditComponent } from './animal-edit/animal-edit.component';
 
 
 
@@ -17,13 +18,15 @@ import { AnimalViewComponent } from './animal-view/animal-view.component';
   declarations: [
     AnimalListComponent,
     AnimalAddPageComponent,
-    AnimalViewComponent
+    AnimalViewComponent,
+    AnimalEditComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {path: 'animal-panel', component: AnimalListComponent},
       {path: 'add-animal', component: AnimalAddPageComponent},
+      {path: 'view-animal/:id', component: AnimalViewComponent},
     ]),
     HeaderModule,
     MainButtonModule,

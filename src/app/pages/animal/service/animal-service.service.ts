@@ -6,7 +6,6 @@ import {Observable} from "rxjs";
 import {AnimalResponseModel} from "../models/animal-response.model";
 import {AnimalRequestModel} from "../models/animal-request.model";
 import {AnimalUpdateRequestModel} from "../models/animal-update-request.model";
-import {ClinicResponseModel} from "../../clinic/models/ClinicResponse.model";
 import {UserProfileModel} from "../../profile/models/user-profile.model";
 
 
@@ -27,7 +26,7 @@ export class AnimalService {
     return this.http.get<AnimalResponseModel[]>(`${this.api}/api/Animal/GetAnimalByRequest${queryString}`);
   }
   getAnimalById(id:string): Observable<AnimalResponseModel>{
-    return this.http.get<AnimalResponseModel>(`${this.api}/api/Animal/${id}`)
+    return this.http.get<AnimalResponseModel>(`${this.api}/api/Animal/GetPetById/${id}`)
   }
   deleteById(id:string):Observable<void>{
     return this.http.delete<void>(`${this.api}/api/Animal/DeleteById/${id}`)

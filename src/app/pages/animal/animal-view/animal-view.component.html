@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="user-profile-wrapper">
+  <div class="user-profile-content">
+    <div class="container">
+      <div class="user_info_wrapper">
+        <div *ngIf="animalInfo.photos!.length > 0" class="image_container">
+          <img [src]="animalInfo.photos![0].photoPath" class="image">
+        </div>
+        <div class="animal_description">
+          <div class="personal-data m-b-15">
+            <div class="user-profile__header m-b-10">
+              <h2>{{animalInfo?.animalName}}</h2>
+            </div>
+            <div class="block username m-b-10">
+              <span class="first-line m-b-10">Description</span>
+              <div class="description">{{animalInfo?.animalDescription}}</div>
+            </div>
+          </div>
+          <div *ngIf="isOwnerCheck" class="buttons">
+            <app-main-button [inputParameters]="editButton" (click)="editAnimal()"></app-main-button>
+            <app-main-button [inputParameters]="deleteButton" (click)="deleteAnimal()"></app-main-button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

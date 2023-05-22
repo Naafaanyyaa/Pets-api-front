@@ -12,7 +12,7 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 @Component({
   selector: 'app-animal-list',
   templateUrl: './animal-list.component.html',
-  styleUrls: ['./animal-list.component.css']
+  styleUrls: ['./animal-list.component.css', '../../../../util.css']
 })
 export class AnimalListComponent implements OnInit{
   animalList?: AnimalResponseModel[];
@@ -32,8 +32,8 @@ export class AnimalListComponent implements OnInit{
   addAnimal(){
     this.router.navigate(['add-animal'])
   }
-  viewAnimal(){
-    this.router.navigate(['view-animal'])
+  viewAnimal(animalId: string){
+    this.router.navigate([`view-animal/${animalId}`])
   }
   refreshAnimalList(): void {
     this.animalService.getAnimalList().subscribe({
