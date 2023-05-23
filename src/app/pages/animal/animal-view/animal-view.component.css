@@ -15,12 +15,6 @@
 .first-line{
   margin-bottom: 10px;
 }
-.description{
-  padding: 10px;
-  background-color: #bebebb;
-  border-radius: 10px;
-  width: 100%;
-}
 .block{
   width: 100%;
 }
@@ -29,4 +23,52 @@
   gap: 10px;
   flex-wrap: wrap;
 }
+.disease_header{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.diseases{
+  width: 100%;
+}
+.item-wrapper{
 
+  width: 100%;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: #bebebb;
+}
+.name{
+  font-size: 22px;
+}
+hr {
+  border: none;
+  border-top: 1px solid #ffffff;
+  margin: 20px 0;
+}
+.description{
+  width: 100%;
+}
+.info-items{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.bold{
+  font-weight: bold;
+}
+.input-group-append{
+  display: flex;
+  justify-content: space-between;
+}
+.yellow{
+  background-color: #f5b539;
+
+}
+.red{
+  background-color: #660216;
+}
+.green{
+  background-color: #3d6606;
+}

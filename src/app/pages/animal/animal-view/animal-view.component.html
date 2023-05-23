@@ -31,12 +31,19 @@
           <div  *ngFor="let item of diseaseList" class="m-b-10 m-t-10">
             <div class="item-wrapper m-b-20">
               <div class="name">{{item.nameOfDisease}}</div>
+              <hr>
               <div class="info">
                 <div class="info-items">
-                  <div class="username">
+                  <div class="description">
+                    <div class="name_of_block m-b-10 bold">
+                      Description
+                    </div>
                     {{item.diseaseDescription}}
                   </div>
-                  <div class="mail">
+                  <div class="recommendations">
+                    <div class="name_of_block m-b-10 bold">
+                      Recommendations
+                    </div>
                     {{item.recommendations}}
                   </div>
                 </div>

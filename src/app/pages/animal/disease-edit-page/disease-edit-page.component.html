@@ -1,0 +1,36 @@
+<app-header></app-header>
+<div class="user-profile-wrapper">
+  <form class="login100-form validate-form" [formGroup]="addUserForm" novalidate (ngSubmit)="submit(addUserForm.value)">
+    <app-input
+      type="text"
+      id="name"
+      formControlName="name"
+      [(ngModel)]="diseaseInfo.nameOfDisease"
+      [inputParameters]="nameConfig"></app-input>
+    <div class="exception m-b-10 color-red f-s-8">
+      <span *ngIf="validateControl('name')" class="color-red">*Name is incorrect</span>
+    </div>
+    <app-input
+      type="text"
+      id="description"
+      formControlName="description"
+      [(ngModel)]="diseaseInfo.diseaseDescription"
+      [inputParameters]="descriptionConfig"></app-input>
+    <div class="exception m-b-10 color-red f-s-8">
+      <span *ngIf="validateControl('description')" class="color-red">*Description must contain >2 symbols</span>
+    </div>
+    <app-input
+      type="text"
+      id="recommendations"
+      formControlName="recommendations"
+      [(ngModel)]="diseaseInfo.recommendations"
+      [inputParameters]="recommendationsConfig"></app-input>
+    <div class="exception m-b-10 color-red f-s-8">
+      <span *ngIf="validateControl('recommendations')" class="color-red">*Recommendations must contain >2 symbols</span>
+    </div>
+    <div class="buttons">
+      <app-main-button type="submit" [inputParameters]="confirmButton" [disabled]="addUserForm.invalid" ></app-main-button>
+      <app-main-button [inputParameters]="cancelButton" (click)="cancel()"></app-main-button>
+    </div>
+  </form>
+</div>

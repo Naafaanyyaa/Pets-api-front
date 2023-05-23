@@ -31,8 +31,11 @@ export class DiseaseService {
     const body = {nameOfDisease: request.nameOfDisease, diseaseDescription: request.diseaseDescription, recommendations:request.recommendations}
     return this.http.post<DiseaseResponseModel>(`${this.api}/api/Disease/AddDisease/${animalId}`, body);
   }
-  updateDisease(request:DiseaseRequestModel, animalId: string):Observable<DiseaseResponseModel>{
+  updateDisease(request:DiseaseRequestModel, diseaseId: string):Observable<DiseaseResponseModel>{
     const body = {nameOfDisease: request.nameOfDisease, diseaseDescription: request.diseaseDescription, recommendations:request.recommendations}
-    return this.http.put<DiseaseResponseModel>(`${this.api}/api/Disease/UpdateDisease/${animalId}`, body)
+    return this.http.put<DiseaseResponseModel>(`${this.api}/api/Disease/UpdateDisease/${diseaseId}`, body)
+  }
+  getDiseaseById(diseaseId:string):Observable<DiseaseResponseModel>{
+    return this.http.get<DiseaseResponseModel>(`${this.api}/api/Disease/GetDiseaseById/${diseaseId}`);
   }
 }

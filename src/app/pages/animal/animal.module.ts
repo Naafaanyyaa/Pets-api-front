@@ -12,6 +12,7 @@ import { AnimalAddPageComponent } from './animal-add-page/animal-add-page.compon
 import { AnimalViewComponent } from './animal-view/animal-view.component';
 import { AnimalEditComponent } from './animal-edit/animal-edit.component';
 import { DiseaseAddPageComponent } from './disease-add-page/disease-add-page.component';
+import { DiseaseEditPageComponent } from './disease-edit-page/disease-edit-page.component';
 
 
 
@@ -21,7 +22,8 @@ import { DiseaseAddPageComponent } from './disease-add-page/disease-add-page.com
     AnimalAddPageComponent,
     AnimalViewComponent,
     AnimalEditComponent,
-    DiseaseAddPageComponent
+    DiseaseAddPageComponent,
+    DiseaseEditPageComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,8 @@ import { DiseaseAddPageComponent } from './disease-add-page/disease-add-page.com
       {path: 'add-animal', component: AnimalAddPageComponent},
       {path: 'view-animal/:id', component: AnimalViewComponent},
       {path: 'edit-animal/:id', component: AnimalEditComponent},
+      {path: 'add-disease/:id', component: DiseaseAddPageComponent},
+      {path: 'edit-disease/:id', component: DiseaseEditPageComponent},
     ]),
     HeaderModule,
     MainButtonModule,
