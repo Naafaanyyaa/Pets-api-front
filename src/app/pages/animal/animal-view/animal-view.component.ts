@@ -8,6 +8,8 @@ import {AnimalResponseModel} from "../models/animal-response.model";
 import {MainButtonInterface} from "../../../shared/components/main-button/models/main-button.interface";
 import {faPencil, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {DiseaseResponseModel} from "../models/disease-response.model";
+import {DiseaseService} from "../service/disease-service.service";
 
 @Component({
   selector: 'app-animal-view',
@@ -17,6 +19,7 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 export class AnimalViewComponent implements OnInit{
   animalId: string = "";
   animalInfo!: AnimalResponseModel;
+  diseaseList?: DiseaseResponseModel[];
   isOwner: boolean = false;
 
   public deleteButton: MainButtonInterface = {
@@ -31,7 +34,7 @@ export class AnimalViewComponent implements OnInit{
     size: "default",
     text: "Edit"
   }
-  constructor(private userInformation: UserInformationCollectorService,private animalService: AnimalService, private route: ActivatedRoute,private router: Router, private toastr: ToastrService, private cdRef: ChangeDetectorRef) {
+  constructor(private diseaseService: DiseaseService, private userInformation: UserInformationCollectorService,private animalService: AnimalService, private route: ActivatedRoute,private router: Router, private toastr: ToastrService, private cdRef: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -45,8 +48,14 @@ export class AnimalViewComponent implements OnInit{
       }
     });
 
-    // this.isOwner = this.isOwnerCheck
-
+    this.diseaseService.getDiseaseList(this.animalId).subscribe({
+      next: (data : DiseaseResponseModel[]) =>{
+        this.diseaseList = data;
+      },
+      error:(error) =>{
+        this.toastr.error(error.error)
+      }
+    })
   }
 
   editAnimal(): void{
@@ -65,9 +74,38 @@ export class AnimalViewComponent implements OnInit{
     })
   }
 
+  addDisease(animalId:string):void{
+    this.router.navigate([`add-disease/${animalId}`])
+  }
+
+  editDisease(diseaseId:string){
+    this.router.navigate([`edit-disease/${diseaseId}`])
+  }
+
+  deleteDisease(diseaseId: string){
+    this.diseaseService.deleteDiseaseById(diseaseId).subscribe({
+      next:() =>{
+        this.toastr.success("Deleted successfully")
+
+      },
+      error:(error) =>{
+        this.toastr.error(error.error)
+      }
+    })
+  }
+
   public get isOwnerCheck() {
     if(this.userInformation.userInfo && this.userInformation.userInfo.id == this.animalInfo.userId){
       return  true;
+    }
+    return false;
+  }
+
+  public get isDoctorCheck() {
+    if (this.userInformation.userInfo) {
+      for (let role of this.userInformation.userInfo.role) {
+        if (role == "Doctor") return true;
+      }
     }
     return false;
   }

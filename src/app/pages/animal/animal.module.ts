@@ -11,6 +11,7 @@ import {UserInformationCollectorService} from "../../shared/services/userInforma
 import { AnimalAddPageComponent } from './animal-add-page/animal-add-page.component';
 import { AnimalViewComponent } from './animal-view/animal-view.component';
 import { AnimalEditComponent } from './animal-edit/animal-edit.component';
+import { DiseaseAddPageComponent } from './disease-add-page/disease-add-page.component';
 
 
 
@@ -19,7 +20,8 @@ import { AnimalEditComponent } from './animal-edit/animal-edit.component';
     AnimalListComponent,
     AnimalAddPageComponent,
     AnimalViewComponent,
-    AnimalEditComponent
+    AnimalEditComponent,
+    DiseaseAddPageComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import { AnimalEditComponent } from './animal-edit/animal-edit.component';
       {path: 'animal-panel', component: AnimalListComponent},
       {path: 'add-animal', component: AnimalAddPageComponent},
       {path: 'view-animal/:id', component: AnimalViewComponent},
+      {path: 'edit-animal/:id', component: AnimalEditComponent},
     ]),
     HeaderModule,
     MainButtonModule,

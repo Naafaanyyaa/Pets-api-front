@@ -1,0 +1,34 @@
+<app-header></app-header>
+<div class="user-profile-wrapper">
+  <form class="login100-form validate-form" [formGroup]="editAnimalForm" novalidate (ngSubmit)="submit(editAnimalForm.value)">
+    <app-input
+      type="text"
+      id="name"
+      formControlName="name"
+      [(ngModel)]="animalInfo.animalName"
+      [inputParameters]="nameConfig"></app-input>
+    <div class="exception m-b-10 color-red f-s-8">
+      <span *ngIf="validateControl('name')" class="color-red">*Name is incorrect</span>
+    </div>
+    <app-input
+      type="text"
+      id="description"
+      formControlName="description"
+      [(ngModel)]="animalInfo.animalDescription"
+      [inputParameters]="descriptionConfig"></app-input>
+    <div class="exception m-b-10 color-red f-s-8">
+      <span *ngIf="validateControl('description')" class="color-red">*Description must contain >2 symbols</span>
+    </div>
+    <div class="form-group">
+      <label for="selectItem">Select Animal Type:</label>
+      <select class="form-control" id="selectItem" formControlName="selectedItem">
+        <option value="{{ AnimalTypeEnum.Dog }}">Dog</option>
+        <option value="{{ AnimalTypeEnum.Cat }}">Cat</option>
+      </select>
+    </div>
+    <div class="buttons">
+      <app-main-button type="submit" [inputParameters]="confirmButton" [disabled]="editAnimalForm.invalid" ></app-main-button>
+      <app-main-button [inputParameters]="cancelButton" (click)="cancel()"></app-main-button>
+    </div>
+  </form>
+</div>
