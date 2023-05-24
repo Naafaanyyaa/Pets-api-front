@@ -3,6 +3,7 @@ import {IIconButton} from "../../icon-button/models/icon-button.interface";
 import {faUser, faArrowRightToBracket, faAddressCard} from "@fortawesome/free-solid-svg-icons";
 import {UserInformationCollectorService} from "../../../services/userInformationCollector.service";
 import {UserService} from "../../../services/user.service";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-header',
@@ -32,7 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   //TODO: changeable variables
-  constructor(private userInformation: UserInformationCollectorService, private userService: UserService) {
+  constructor(private userInformation: UserInformationCollectorService, private userService: UserService, private cookieService: CookieService) {
   }
 
   ngOnInit(): void {
@@ -46,7 +47,9 @@ export class HeaderComponent implements OnInit {
   public get isAuthenticate() {
     return this.userInformation.token ? true : false;
   }
-
+  setCulture(culture: string) {
+    this.cookieService.set('culture', culture);
+  }
   public get isAdmin() {
     if (this.userInformation.userInfo) {
       for (let role of this.userInformation.userInfo.role) {
@@ -59,5 +62,7 @@ export class HeaderComponent implements OnInit {
   public logout() {
     this.userService.logout();
   }
+
+
 
 }

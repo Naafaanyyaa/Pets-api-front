@@ -22,18 +22,16 @@
     </div>
     <div class="nav-container">
       <nav class="nav-menu">
-        <a class="nav-menu__button white" routerLink="/clinic-list">Clinics</a>
-        <a class="nav-menu__button white" routerLink="/animal-panel">My animals</a>
-        <a class="nav-menu__button white">Questions</a>
-        <a class="nav-menu__button white" *ngIf="isAdmin" routerLink="/admin-panel">Admin panel</a>
+        <a class="nav-menu__button white" routerLink="/clinic-list">{{'header.clinic' | translate}}</a>
+        <a class="nav-menu__button white" routerLink="/animal-panel">{{'header.animal' | translate}}</a>
+        <a class="nav-menu__button white" *ngIf="isAdmin" routerLink="/admin-panel">{{'header.admin' | translate}}</a>
       </nav>
       <div class="language-container">
-        <a class="language white">ua</a>
-        <a class="language white">en</a>
+        <a class="language white" (click)="setCulture('uk')">ua</a>
+        <a class="language white" (click)="setCulture('en')">en</a>
       </div>
     </div>
     <div class="profile">
-<!--      TODO:Fix URL in routerLink for profile-->
       <app-icon-button class="m-r-10" [inputParameters]="userProfile"></app-icon-button>
       <ng-container *ngIf="isAuthenticate; else secondState">
         <app-icon-button (click)="logout()" [inputParameters]="logoutIcon"></app-icon-button>

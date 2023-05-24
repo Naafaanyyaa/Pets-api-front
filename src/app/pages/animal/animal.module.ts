@@ -13,6 +13,7 @@ import { AnimalViewComponent } from './animal-view/animal-view.component';
 import { AnimalEditComponent } from './animal-edit/animal-edit.component';
 import { DiseaseAddPageComponent } from './disease-add-page/disease-add-page.component';
 import { DiseaseEditPageComponent } from './disease-edit-page/disease-edit-page.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 
 
@@ -41,6 +42,7 @@ import { DiseaseEditPageComponent } from './disease-edit-page/disease-edit-page.
     InputModule,
     ReactiveFormsModule,
     LoginButtonModule,
+    TranslateModule,
   ],
   providers: [UserInformationCollectorService]
 })

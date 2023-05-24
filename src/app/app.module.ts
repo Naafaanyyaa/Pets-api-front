@@ -4,17 +4,19 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {AuthInterceptor} from "./shared/services/user.service.interceptor";
 import {UserService} from "./shared/services/user.service";
 import {AppRoutingModule} from "./app-routing.module";
 import {Page404Module} from "./pages/page404/page404.module";
 import {LoginModule} from "./authentication/login/login.module";
-import { ProfileEditComponent } from './pages/profile/profile-edit/profile-edit.component';
 import {HeaderModule} from "./shared/components/header/header.module";
 import {MainButtonModule} from "./shared/components/main-button/main-button.module";
 import {InputModule} from "./shared/components/input/input.module";
+import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,14 @@ import {InputModule} from "./shared/components/input/input.module";
     LoginModule,
     HeaderModule,
     MainButtonModule,
-    InputModule
+    InputModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: (http:HttpClient) => {return new TranslateHttpLoader(http, './assets/i18n/', '.json');},
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [UserService,
     {
@@ -49,5 +58,9 @@ import {InputModule} from "./shared/components/input/input.module";
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}
 
 

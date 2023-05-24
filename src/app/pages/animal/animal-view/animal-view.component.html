@@ -25,8 +25,8 @@
       <div class="diseases m-t-10">
         <div *ngIf="isOwnerCheck || isDoctorCheck" class="diseaseList">
           <div class="disease_header">
-            <h3>Disease list</h3>
-            <button class="btn btn-primary green" type="button" (click)="addDisease(animalId)">Add disease</button>
+            <h3>{{ 'animal.diseaseList' | translate }}</h3>
+            <button class="btn btn-primary green" type="button" (click)="addDisease(animalId)"> {{ 'animal.addDisease' | translate }}</button>
           </div>
           <div  *ngFor="let item of diseaseList" class="m-b-10 m-t-10">
             <div class="item-wrapper m-b-20">
@@ -36,20 +36,20 @@
                 <div class="info-items">
                   <div class="description">
                     <div class="name_of_block m-b-10 bold">
-                      Description
+                      {{ 'animal.description' | translate }}
                     </div>
                     {{item.diseaseDescription}}
                   </div>
                   <div class="recommendations">
                     <div class="name_of_block m-b-10 bold">
-                      Recommendations
+                      {{ 'animal.recommendations' | translate }}
                     </div>
                     {{item.recommendations}}
                   </div>
                 </div>
                 <div *ngIf="isDoctorCheck" class="input-group-append">
-                  <button class="btn btn-primary yellow" type="button" (click)="editDisease(item.id)">Edit disease</button>
-                  <button class="btn btn-primary red" type="button" (click)="deleteDisease(item.id)">Delete disease</button>
+                  <button class="btn btn-primary yellow" type="button" (click)="editDisease(item.id)"> {{ 'animal.edit' | translate }}</button>
+                  <button class="btn btn-primary red" type="button" (click)="deleteDisease(item.id)">{{ 'animal.deleteDisease' | translate }}</button>
                 </div>
               </div>
             </div>

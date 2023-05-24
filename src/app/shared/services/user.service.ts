@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import {Injectable} from "@angular/core";
+import {EventEmitter, Injectable} from "@angular/core";
 import {environment} from "../../../environments/environment.prod";
 import {AuthenticationRequestModel} from "../../models/authenticationRequestModel.interface";
 import {RegistrationRequestModel} from "../../models/registrationRequestModel.interface";
@@ -12,6 +12,7 @@ import {CookieService} from "ngx-cookie-service";
 @Injectable()
 export class UserService{
   private readonly api = environment.urlAddress;
+  public cultureChange: EventEmitter<void> = new EventEmitter<void>();
   constructor(private http: HttpClient, public cookieService: CookieService) {}
 
   loginUser(user:AuthenticationRequestModel):Observable<AuthenticationResponseModel>{
@@ -25,6 +26,14 @@ export class UserService{
     this.cookieService.deleteAll();
   }
 
+  public getCultureParam(): string {
+    return this.cookieService.get('culture');
+  }
+
+  public updateCulture(culture: string): void {
+    this.cookieService.set('culture', culture);
+    this.cultureChange.emit();
+  }
   getDecodedAccessToken(token: string): any {
     try {
       return jwt_decode(token);

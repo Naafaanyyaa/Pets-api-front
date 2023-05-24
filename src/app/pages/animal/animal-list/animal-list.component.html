@@ -5,8 +5,8 @@
       <div class="searching_field m-b-20">
         <input type="text" class="form-control" placeholder="Searching string" id="searchingString">
         <div class="input-group-append row">
-          <button class="btn btn-primary" type="button" (click)="filterAnimal()">Search</button>
-          <button class="btn btn-primary green" type="button" (click)="addAnimal()">Add animal</button>
+          <button class="btn btn-primary" type="button" (click)="filterAnimal()"> {{ 'clinics.search' | translate }}</button>
+          <button class="btn btn-primary green" type="button" (click)="addAnimal()">{{ 'animal.addAnimal' | translate }}</button>
         </div>
       </div>
       <div  class="content">
@@ -19,14 +19,14 @@
             <div class="info">
               <div class="info-items">
                 <div class="username">
-                  Description: {{item.animalDescription}}
+                  {{ 'animal.description' | translate }}: {{item.animalDescription}}
                 </div>
                 <div class="mail">
-                  Type: {{item.animalType}}
+                  {{ 'animal.type' | translate }}: {{item.animalType}}
                 </div>
               </div>
               <div class="input-group-append">
-                <button class="btn btn-primary green" type="button" (click)="viewAnimal(item.id)">View animal</button>
+                <button class="btn btn-primary green" type="button" (click)="viewAnimal(item.id)"> {{ 'animal.viewAnimal' | translate }}</button>
               </div>
             </div>
           </div>

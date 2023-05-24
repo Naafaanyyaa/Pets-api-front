@@ -18,7 +18,7 @@
       <span *ngIf="validateControl('description')" class="color-red">*Firstname must contain >2 symbols</span>
     </div>
     <div class="form-group">
-      <label for="selectItem">Select Animal Type:</label>
+      <label for="selectItem">{{ 'animal.selectedType' | translate }}</label>
       <select class="form-control" id="selectItem" formControlName="selectedItem">
         <option value="{{ AnimalTypeEnum.Dog }}">Dog</option>
         <option value="{{ AnimalTypeEnum.Cat }}">Cat</option>

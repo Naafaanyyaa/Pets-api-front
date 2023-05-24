@@ -1,0 +1,85 @@
+{
+  "header": {
+    "clinic": "MY CLINICS",
+    "admin": "ADMIN PANEL",
+    "animal": "MY ANIMALS"
+  },
+  "login": {
+    "welcome": "Welcome",
+    "username": "Username",
+    "password": "Password",
+    "login": "Login",
+    "noAccount": "Still dont`t have an account?"
+  },
+  "registration": {
+    "welcome": "Welcome",
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "username": "Username",
+    "password": "Password",
+    "email": "Email",
+    "registration": "Registration",
+    "haveAccount": "Already have account?"
+  },
+  "clinics": {
+    "address":"Address",
+    "description": "Description",
+    "phone": "Phone",
+    "searchingString": "Searching string",
+    "username": "username",
+    "search": "Search",
+    "addClinic": "Add clinic",
+    "viewClinic": "View clinic",
+    "banClinic": "Ban clinic",
+    "unbanClinic": "Unban clinic",
+    "addDoctor": "Add doctor",
+    "updateClinic": "Update clinic",
+    "deleteClinic": "Delete clinic"
+  },
+  "animal": {
+    "description": "Description",
+    "type": "Type",
+    "viewAnimal": "View animal",
+    "addAnimal": "Add animal",
+    "edit": "Edit",
+    "delete": "Delete",
+    "diseaseList": "Disease list",
+    "recommendations": "Recommendations",
+    "addDisease": "Add disease",
+    "deleteDisease": "Delete disease",
+    "selectedType": "Select Animal Type",
+    "selectedUser": "Select user"
+  },
+  "button": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "close": "Close",
+    "saveChanges": "Save changes",
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+  "admin": {
+    "hasBan": "Has ban",
+    "banUser": "Ban user",
+    "unbanUser": "Unban user",
+    "changeRole": "Change role",
+    "roleLine": "Change Role for"
+  },
+  "profile": {
+    "hello": "Hello",
+    "hasSubscription": "Has subscription",
+    "subscription": "Create subscription",
+    "changePassword": "Change password"
+  },
+  "subscription": {
+    "membership": "Advanced Membership",
+    "unlimited": "unlimited",
+    "description": "Suitable for entrepreneurs with their own clinic",
+    "advance1": "Hospital host member",
+    "advance2": "Allowed to create clinic"
+  },
+  "error": {
+    "success": "Success",
+    "error": "Error"
+  }
+}

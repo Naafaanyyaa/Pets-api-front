@@ -6,7 +6,7 @@
         <input type="text" class="form-control" placeholder="Username" id="username">
         <input type="text" class="form-control" placeholder="Email" id="email">
         <div class="input-group-append">
-          <button class="btn btn-primary" type="button" (click)="filterUser()">Search</button>
+          <button class="btn btn-primary" type="button" (click)="filterUser()">{{ 'clinics.search' | translate }}</button>
         </div>
       </div>
       <div class="content">
@@ -15,7 +15,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Change Role for {{item.firstName}} {{item.lastName}}</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">{{ 'admin.roleLine' | translate }} {{item.firstName}} {{item.lastName}}</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -29,8 +29,8 @@
                   </select>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" (click)="changeUserRole(item.id, selectedRole)">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'button.cancel' | translate }}</button>
+                  <button type="button" class="btn btn-primary" (click)="changeUserRole(item.id, selectedRole)">{{ 'button.saveChanges' | translate }}</button>
                 </div>
               </div>
             </div>
@@ -41,19 +41,19 @@
             <div class="info">
               <div class="info-items">
                 <div class="mail">
-                  Email: {{item.email}}
+                  {{ 'registration.email' | translate }}: {{item.email}}
                 </div>
                 <div class="username">
-                  Username: {{item.userName}}
+                  {{ 'registration.username' | translate }}: {{item.userName}}
                 </div>
                 <div class="ban">
-                  Has ban: {{item.isBanned}}
+                  {{ 'admin.hasBan' | translate }}: {{item.isBanned}}
                 </div>
               </div>
               <div class="input-group-append">
-                <button class="btn btn-primary yellow" type="button" data-toggle="modal" [attr.data-target]="'#exampleModal' + item.id">Change role</button>
-                <button *ngIf="item.isBanned" class="btn btn-primary green" type="button" (click)="banUser(item.id)">Unban user</button>
-                <button *ngIf="!item.isBanned" class="btn btn-primary red" type="button" (click)="banUser(item.id)">Ban user</button>
+                <button class="btn btn-primary yellow" type="button" data-toggle="modal" [attr.data-target]="'#exampleModal' + item.id"> {{ 'admin.changeRole' | translate }}</button>
+                <button *ngIf="item.isBanned" class="btn btn-primary green" type="button" (click)="banUser(item.id)">{{ 'admin.unbanUser' | translate }}</button>
+                <button *ngIf="!item.isBanned" class="btn btn-primary red" type="button" (click)="banUser(item.id)">{{ 'admin.banUser' | translate }}</button>
               </div>
             </div>
           </div>

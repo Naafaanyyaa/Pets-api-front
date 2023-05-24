@@ -6,6 +6,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {InputModule} from "../../shared/components/input/input.module";
 import {LoginButtonModule} from "../../shared/components/login-button/login-button.module";
 import {HeaderModule} from "../../shared/components/header/header.module";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 
@@ -14,6 +15,7 @@ import {HeaderModule} from "../../shared/components/header/header.module";
     LoginComponent
   ],
     imports: [
+        TranslateModule,
         CommonModule,
         ReactiveFormsModule,
         InputModule,
@@ -24,7 +26,7 @@ import {HeaderModule} from "../../shared/components/header/header.module";
                 component: LoginComponent,
             }
         ]),
-        HeaderModule
+        HeaderModule,
 
     ],
 })

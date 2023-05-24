@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import {IconButtonModule} from "../icon-button/icon-button.module";
 import {RouterLink} from "@angular/router";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {RouterLink} from "@angular/router";
   imports: [
     CommonModule,
     IconButtonModule,
-    RouterLink
+    RouterLink,
+    TranslateModule
   ]
 })
 export class HeaderModule { }

@@ -1,0 +1,81 @@
+{
+  "header": {
+    "clinic": "МОЇ КЛІНІКИ",
+    "admin": "ПАНЕЛЬ АДМІНІСТРАЦІЇ",
+    "animal": "МОЇ ТВАРИНИ"
+  },
+  "login": {
+    "welcome": "Ласкаво просимо",
+    "username": "Ім'я користувача",
+    "password": "Пароль",
+    "login": "Вхід",
+    "noAccount": "У вас ще немає облікового запису?"
+  },
+  "registration": {
+    "welcome": "Ласкаво просимо",
+    "firstname": "Ім'я",
+    "lastname": "Прізвище",
+    "username": "Ім'я користувача",
+    "password": "Пароль",
+    "email": "Електронна пошта",
+    "registration": "Реєстрація",
+    "haveAccount": "Вже є обліковий запис?"
+  },
+  "clinics": {
+    "address":"Адреса",
+    "description": "Опис",
+    "phone": "Телефон",
+    "searchingString": "Рядок пошуку",
+    "username": "Ім'я користувача",
+    "search": "Пошук",
+    "addClinic": "Додати клініку",
+    "viewClinic": "Перегляд клініки",
+    "banClinic": "Заблокувати клініку",
+    "unbanClinic": "Розблокуати клініку",
+    "addDoctor": "Додати лікаря",
+    "updateClinic": "Оновити клініку",
+    "deleteClinic": "Видалити клініку"
+  },
+  "animal": {
+    "description": "Опис",
+    "type": "Тип",
+    "viewAnimal": "Переглянути тварину",
+    "addAnimal": "Додати тварину",
+    "edit": "Редагувати",
+    "delete": "Видалити",
+    "diseaseList": "Список захворювань",
+    "recommendations": "Рекомендації",
+    "addDisease": "Додати хвороб",
+    "deleteDisease": "Видалити хворобу",
+    "selectedType": "Виберіть тип тварини",
+    "selectedUser": "Виберіть користувача"
+  },
+  "button": {
+    "confirm": "Підтвердити",
+    "cancel": "Скасувати",
+    "close": "Закрити",
+    "saveChanges": "Зберегти зміни",
+    "delete": "Видалити",
+    "edit": "Редагувати"
+  },
+  "admin": {
+    "hasBan": "Має заборону",
+    "banUser": "Забанити користувача",
+    "unbanUser": "Розблокувати користувача",
+    "changeRole": "Змінити роль",
+    "roleLine": "Змінити роль для"
+  },
+  "profile": {
+    "hello": "Привіт",
+    "hasSubscription": "Має підписку",
+    "subscription": "Створити підписку",
+    "changePassword": "Змінити пароль"
+  },
+  "subscription": {
+    "membership": "Розширене членство",
+    "unlimited": "необмежений",
+    "description": "Підходить для підприємців із власною клінікою",
+    "advance1": "Приймаючий учасник лікарні",
+    "advance2": "Дозволено створювати клініку"
+  }
+}

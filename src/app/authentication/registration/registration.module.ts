@@ -7,6 +7,7 @@ import {LoginButtonModule} from "../../shared/components/login-button/login-butt
 import {RouterModule} from "@angular/router";
 import {LoginComponent} from "../login/login/login.component";
 import {HeaderModule} from "../../shared/components/header/header.module";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 
@@ -25,7 +26,8 @@ import {HeaderModule} from "../../shared/components/header/header.module";
                 component: RegistrationComponent,
             }
         ]),
-        HeaderModule
+        HeaderModule,
+        TranslateModule
 
     ]
 })
